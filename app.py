@@ -1,30 +1,13 @@
-from flask import Flask
+from flask import Flask, redirect
 app = Flask(__name__)
 
 @app.route("/")
 @app.route("/index")
 def start():
-    return """
-<!doctype html>
-<html>
-    <head>
-        <title>НГТУ, ФБ, Лабораторные работы</title>
-    </head>
-    <body>
-        <header>
-            НГТУ, ФБ, WEB-программирование, часть 2. Список лабораторных
-        </header>
-        <h3>
-        <a href="http://127.0.0.1:5000/lab1">Первая лабораторная</a>
-        </h3>
-        <footer>
-            &copy; Трубицына Алиса, Ершова Клара, ФБИ -12, 3 курс, 2023
-        </footer>
-    </body>
-</html>
-"""
-@app.route("/lab1")
-def two():
+    return redirect("/menu", code=302)
+
+@app.route("/menu")
+def menu():
      return """
 <!doctype html>
 <html>

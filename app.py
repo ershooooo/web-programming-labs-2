@@ -8,10 +8,11 @@ def start():
 
 @app.route("/menu")
 def menu():
-     return """
+     return '''
 <!doctype html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="''' + url_for('static', filename='lab1.css') + '''">
         <title>Трубицына Алиса Владимировна, Ершова Клара Александровна, лабораторная 1</title>
     </head>
     <body>
@@ -32,7 +33,7 @@ def menu():
         </footer>
     </body>
 </html>
-"""
+'''
 @app.route('/lab1/oak')
 def oak():
      return '''
@@ -117,10 +118,11 @@ def zebra():
 
 @app.route("/lab1")
 def two():
-     return """
+     return '''
 <!doctype html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="''' + url_for('static', filename='lab1.css') + '''">
         <title>Трубицына Алиса Владимировна, Ершова Клара Александровна, лабораторная 1</title>
     </head>
     <body>
@@ -147,4 +149,4 @@ def two():
         </footer>
     </body>
 </html>
-"""
+'''

@@ -154,4 +154,7 @@ def two():
 @app.route('/lab2/example')
 def example():
     name = 'Трубицына Алиса, Ершова Клара'
-    return render_template('example.html', name=name)
+    number = 'Лабораторная работа 2'
+    group = 'ФБИ-12'
+    cours = '3 курс'
+    return render_template('example.html', name=name, number=number, gropu=group, cours=cours)

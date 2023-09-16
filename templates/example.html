@@ -4,12 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Трубицына Алиса, Ершова Клара. {{ number }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <title>
+        {% if name %}
+            {{ name }},
+        {% else %}
+            Анонимус,
+        {% endif %}
+        {{ number }} 
+    </title>
 </head>
 <body>
     <header>
-        WEB-программирование, часть 2. {{ number }}
+        WEB-программирование, часть 2. {% if number %} Лабораторная работа 2{% endif %}
     </header>
 
     <main>
@@ -20,7 +27,26 @@
     </main>
 
     <footer>
-        &copy; {{ name }}, {{ group }}, {{ cours }}, 2023
+        &copy;
+        {% if name %}
+            {{ name }},
+        {% else %}
+            Анонимус,
+        {% endif %} 
+
+        {% if group %}
+            {{ group }},
+        {% else %}
+            ФБ,
+        {% endif %} 
+
+        {% if cours %}
+            {{ cours }}, 
+        {% else %}
+            Неизвестный,
+        {% endif %} 
+        
+        2023
     </footer>
 </body>
 </html>

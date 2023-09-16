@@ -157,4 +157,4 @@ def example():
     number = 'Лабораторная работа 2'
     group = 'ФБИ-12'
     cours = '3 курс'
-    return render_template('example.html', name=name, number=number, gropu=group, cours=cours)
+    return render_template('example.html', number=number,name=name,group=group,cours=cours)

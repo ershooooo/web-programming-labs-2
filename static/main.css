@@ -1,0 +1,30 @@
+body {
+    margin: 0;
+    background-color: rgb(236, 215, 233);
+    color: rgb(160, 128, 196);
+}
+
+main {
+    margin-bottom: 40px;
+    padding: 10px;
+    background-color: rgb(236, 215, 233);
+    color: rgb(160, 128, 196);
+    text-align: left;
+    font-size: 30px;
+}
+
+header {
+    color: rgb(174, 114, 231);
+    font-style: italic;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: left;
+}
+
+footer {
+    color: rgb(174, 114, 231);
+    font-style: italic;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: right;
+}

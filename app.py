@@ -153,8 +153,12 @@ def two():
 
 @app.route('/lab2/example')
 def example():
-    name = 'Трубицына Алиса, Ершова Клара'
-    number = 'Лабораторная работа 2'
-    group = 'ФБИ-12'
-    cours = '3 курс'
-    return render_template('example.html', number=number,name=name,group=group,cours=cours)
+    name, number, group, cours = 'Трубицына Алиса, Ершова Клара','Лабораторная работа 2', 'ФБИ-12', '3 курс'
+    fruits =[
+         {'name':'яблоки','price':100},
+         {'name':'груши','price':120},
+         {'name':'апельсины','price':80},
+         {'name':'мандарины','price':95},
+         {'name':'манго','price':350}
+         ]
+    return render_template('example.html', number=number,name=name,group=group,cours=cours, fruits=fruits)

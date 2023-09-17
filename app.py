@@ -161,4 +161,16 @@ def example():
          {'name':'мандарины','price':95},
          {'name':'манго','price':350}
          ]
-    return render_template('example.html', number=number,name=name,group=group,cours=cours, fruits=fruits)
+    books =[
+         {'name': 'Бесы','author': 'Федор Достоевский','style': 'роман','page':704},
+         {'name': 'Мартин Иден','author': 'Джек Лондон ','style': 'роман','page':416},
+         {'name': 'Братья Карамазовы','author': 'Федор Достоевский','style': 'роман','page':832},
+         {'name': 'Тридцатилетняя женщина','author': 'Оноре де Бальзак','style': 'роман','page':384},
+         {'name': 'Палата №6','author': 'Антон Чехов','style': 'повесть','page':416},
+         {'name': 'Голем','author': 'Густав Майринк','style': 'роман','page':320},
+         {'name': 'Гроза','author': 'Александр Островский','style': 'трагедия','page':416},
+         {'name': 'Черный обелиск','author': 'Эрих Мария Ремарк','style': 'роман','page':416},
+         {'name': 'Фауст','author': 'Иоганн Вольфганг Гете','style': 'трагедия','page':544},
+         {'name': 'Процесс','author': 'Франц Кафка','style': 'роман','page':320}
+    ]   
+    return render_template('example.html', number=number,name=name,group=group,cours=cours, fruits=fruits,books=books)

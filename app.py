@@ -174,3 +174,7 @@ def example():
          {'name': 'Процесс','author': 'Франц Кафка','style': 'роман','page':320}
     ]   
     return render_template('example.html', number=number,name=name,group=group,cours=cours, fruits=fruits,books=books)
+
+@app.route('/lab2/')
+def lab2():
+    return render_template('lab2.html')

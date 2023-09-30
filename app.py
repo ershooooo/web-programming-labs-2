@@ -182,4 +182,18 @@ def lab2():
 def pictures():
     return render_template('pictures.html')
    
-    
+@app.route('/lab2/zach_2')
+def zach_2():
+    A,B,C,N,K,G,H,summa=2,4,6,4,6,2,5,0
+    if A<B<C:
+        A=A*2
+        B=B*2
+        C=C*2
+
+    result=str(N)*K
+
+    for i in range(1, H+1):
+        summa += i**G
+
+    slovar=[{'A':A,'B':B,'C':C,'summa':summa,'result':result}]
+    return render_template('zach_2.html',slovar=slovar)

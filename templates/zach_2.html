@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <title>
+        {% if name %}
+            {{ name }},
+        {% else %}
+            Анонимус,
+        {% endif %}
+        {{ number }} 
+    </title>
+</head>
+<body>
+    <header>
+        WEB-программирование, часть 2. {% if number %} Лабораторная работа 2{% endif %}
+    </header>
+
+    <main>
+        <div>
+            {% if A,B,C %}
+                {{ A,B,C }}
+            {% else %}
+                2,4,6
+            {% endif %} 
+        </div>
+        <div>
+            {{ result }}
+        </div>
+        <div>
+            {{ summa }}
+        </div>
+        <div>
+            {% for s in slovar %}
+                {{s.A}},{{s.B}},{{s.C}},{{s.result}},{{s.summa}}
+            {% endfor %}
+        </div>
+        
+    </main>
+</body>
+</html>

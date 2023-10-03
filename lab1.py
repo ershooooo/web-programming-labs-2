@@ -25,8 +25,9 @@ def menu():
 
         <h1>Список лабораторных</h1>
         <menu>
-        <a href="lab1" target="_blank">Лабораторная работа 1</a>
+        <a href="/lab1/" target="_blank">Лабораторная работа 1</a>
         <a href="/lab2/" target="_blank">Лабораторная работа 2</a>
+        <a href="/lab3/" target="_blank">Лабораторная работа 3</a>
         </menu>
 
         <footer>
@@ -123,7 +124,7 @@ def zebra():
 '''
 
 
-@lab1.route("/lab1")
+@lab1.route("/lab1/")
 def two():
      return '''
 <!doctype html>

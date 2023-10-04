@@ -28,3 +28,39 @@ footer {
     font-weight: bold;
     text-align: right;
 }
+
+a {
+    color: rgb(122, 220, 223); 
+    text-decoration: none;
+    font-weight: bold;
+ }
+ a:visited {
+    color:  rgb(160, 128, 196);
+ }
+ a:hover {
+     color: rgb(122, 220, 223); 
+     text-decoration: underline;
+     font-weight: bold;
+     text-shadow: 7px 5px 2px rgb(168, 117, 190);
+     transition: all 0.3s;
+ }
+
+.error{
+    color: rgb(247, 1, 1);
+    background-color: rgb(235, 223, 146);
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.text_input_form{
+    font-size: 24px;
+    color: rgb(160, 128, 196);
+    font-weight: bold;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 3px solid rgb(160, 128, 196);
+    border-radius: 0.25rem;
+    height: 40px;
+    width: 400px;
+}

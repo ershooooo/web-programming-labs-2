@@ -148,10 +148,10 @@ def two():
         <h2><a href=" http://127.0.0.1:5000/menu ">меню</a></h2>
 
         <h2>Реализованные роуты</h2>
-        <h2><a href=" http://127.0.0.1:5000/lab1/oak ">http://127.0.0.1:5000/lab1/oak- дуб</a></h2>
-        <h2><a href=" http://127.0.0.1:5000/lab1/student ">http://127.0.0.1:5000/lab1/student- студент</a></h2>
-        <h2><a href=" http://127.0.0.1:5000/lab1/python ">http://127.0.0.1:5000/lab1/python- python</a></h2>
-        <h2><a href=" http://127.0.0.1:5000/lab1/zebra ">http://127.0.0.1:5000/lab1/zebra- зебра</a></h2>
+        <h2><a href="/lab1/oak">/lab1/oak- дуб</a></h2>
+        <h2><a href="/lab1/student">/lab1/student- студент</a></h2>
+        <h2><a href="/lab1/python">/lab1/python- python</a></h2>
+        <h2><a href="/lab1/zebra">/lab1/zebra- зебра</a></h2>
         <footer>
             &copy; Трубицына Алиса, Ершова Клара, ФБИ -12, 3 курс, 2023
         </footer>

@@ -64,3 +64,19 @@ a {
     height: 40px;
     width: 400px;
 }
+
+.price{
+    font-size: 20px;
+    color: rgb(18, 143, 27);
+    margin-left: 20px;
+}
+
+.pic{
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -600px;
+    margin-left: 55%;
+    height: 600px;
+}

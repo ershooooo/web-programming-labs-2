@@ -59,3 +59,35 @@ def pay():
 @lab3.route('/lab3/succes')
 def succes():
     return render_template('succes.html')
+
+@lab3.route('/lab3/bilet')
+def bilet():
+    errors={}
+    FIO=request.args.get('FIO')
+    if FIO == '':
+        errors['FIO'] = 'Заполните поле!'
+
+    age=request.args.get('age')
+    if age == '':
+        errors['age'] = 'Заполните поле!'
+    
+    wherefrom=request.args.get('wherefrom')
+    if wherefrom == '':
+        errors['wherefrom'] = 'Заполните поле!'
+    
+    whereto=request.args.get('whereto')
+    if whereto == '':
+        errors['whereto'] = 'Заполните поле!'
+    
+    date=request.args.get('date')
+    if date == '':
+        errors['date'] = 'Заполните поле!'
+    
+    type=request.args.get('type')
+    place=request.args.get('place')
+    things=request.args.get('things')
+    return render_template('bilet.html',FIO=FIO,age=age,wherefrom=wherefrom,whereto=whereto,date=date,type=type,place=place,things=things,errors=errors)
+
+@lab3.route('/lab3/biletfull')
+def biletfull():
+    return render_template('biletfull.html')

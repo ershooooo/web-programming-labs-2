@@ -65,6 +65,11 @@ a {
     width: 400px;
 }
 
+.text_input_form_2{
+    height: 30px;
+    width: 50px;
+}
+
 .price{
     font-size: 20px;
     color: rgb(18, 143, 27);
@@ -79,4 +84,12 @@ a {
     margin-top: -600px;
     margin-left: 55%;
     height: 600px;
+}
+
+.block_1{
+    margin-left: 33%;
+    margin-top: -500px;
+}
+.block_2{
+    margin-top: 70px;
 }

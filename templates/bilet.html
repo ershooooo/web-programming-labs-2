@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block lab %}Лабораторная работа 3{% endblock %}
+
+{% block main %}
+    <h1>Железнодорожный билет</h1>
+    <form>
+        <label>ФИО</label>
+        <div>
+            <input class="text_input_form" class="text_input_form" type="text" name="FIO" value="{{FIO or ''}}">
+            <span class="error">{{ errors.FIO }}</span>
+        </div>
+        <br>
+        <label>Возраст</label>
+        <div>
+            <input class="text_input_form" type="number" name="age" value="{{age or ''}}">
+            <span class="error">{{ errors.age }}</span>
+        </div>
+        <br>
+        <label>Пункт выезда</label>
+        <div>
+            <input class="text_input_form" type="text" name="wherefrom" value="{{wherefrom or ''}}">
+            <span class="error">{{ errors.wherefrom }}</span>
+        </div>
+        <br>
+        <label>Пункт назначения</label>
+        <div>
+            <input class="text_input_form" type="text" name="whereto" value="{{whereto or ''}}">
+            <span class="error">{{ errors.whereto }}</span>
+        </div>
+        <br>
+        <label>Дата поездки</label>
+        <div>
+            <input class="text_input_form" type="date" name="date" value="{{date or ''}}">
+            <span class="error">{{ errors.date }}</span>
+        </div>
+        
+
+        <div class="block_1">
+            <label>Тип билета</label>
+            <div>
+                <input class="text_input_form_2" type="radio" value="child" name="type" checked>Детский
+            </div>
+            <div>
+                <input class="text_input_form_2" type="radio" value="old" name="type" checked>Взрослый
+            </div>
+
+            <label>Полка</label>
+            <div>
+                <input class="text_input_form_2" type="radio" value="down" name="place" checked>Нижняя
+            </div>
+            <div>
+                <input class="text_input_form_2" type="radio" value="up" name="place" checked>Верхняя
+            </div>
+            <div>
+                <input class="text_input_form_2" type="radio" value="down-t" name="place" checked>Нижняя боковая
+            </div>
+            <div>
+                <input class="text_input_form_2" type="radio" value="up-t" name="place" checked>Верхняя боковая
+            </div>
+
+            <label>Наличие багажа</label>
+            <div>
+                <input class="text_input_form_2" type="radio" value="with" name="things" checked>С багажом
+            </div>
+            <div>
+                <input class="text_input_form_2" type="radio" value="without" name="things" checked>Без багажа
+            </div>
+        </div>
+        <br>
+        <div class="block_2">
+            <button class="text_input_form" type="submit">Сформировать билет</button>
+        </div>
+    </form>
+    
+{% endblock %}

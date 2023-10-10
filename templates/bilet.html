@@ -4,34 +4,34 @@
 
 {% block main %}
     <h1>Железнодорожный билет</h1>
-    <form>
+    <form action="/lab3/biletfull">
         <label>ФИО</label>
         <div>
-            <input class="text_input_form" class="text_input_form" type="text" name="FIO" value="{{FIO or ''}}">
+            <input class="text_input_form" class="text_input_form" type="text" name="FIO" value="{{FIO or ''}}" required>
             <span class="error">{{ errors.FIO }}</span>
         </div>
         <br>
         <label>Возраст</label>
         <div>
-            <input class="text_input_form" type="number" name="age" value="{{age or ''}}">
+            <input class="text_input_form" type="number" name="age" value="{{age or ''}}" required>
             <span class="error">{{ errors.age }}</span>
         </div>
         <br>
         <label>Пункт выезда</label>
         <div>
-            <input class="text_input_form" type="text" name="wherefrom" value="{{wherefrom or ''}}">
+            <input class="text_input_form" type="text" name="wherefrom" value="{{wherefrom or ''}}" required>
             <span class="error">{{ errors.wherefrom }}</span>
         </div>
         <br>
         <label>Пункт назначения</label>
         <div>
-            <input class="text_input_form" type="text" name="whereto" value="{{whereto or ''}}">
+            <input class="text_input_form" type="text" name="whereto" value="{{whereto or ''}}" required>
             <span class="error">{{ errors.whereto }}</span>
         </div>
         <br>
         <label>Дата поездки</label>
         <div>
-            <input class="text_input_form" type="date" name="date" value="{{date or ''}}">
+            <input class="text_input_form" type="date" name="date" value="{{date or ''}}" required>
             <span class="error">{{ errors.date }}</span>
         </div>
         
@@ -39,32 +39,32 @@
         <div class="block_1">
             <label>Тип билета</label>
             <div>
-                <input class="text_input_form_2" type="radio" value="child" name="type" checked>Детский
+                <input class="text_input_form_2" type="radio" value="child" name="type" checked required>Детский
             </div>
             <div>
-                <input class="text_input_form_2" type="radio" value="old" name="type" checked>Взрослый
+                <input class="text_input_form_2" type="radio" value="old" name="type" checked required>Взрослый
             </div>
 
             <label>Полка</label>
             <div>
-                <input class="text_input_form_2" type="radio" value="down" name="place" checked>Нижняя
+                <input class="text_input_form_2" type="radio" value="down" name="place" checked required>Нижняя
             </div>
             <div>
-                <input class="text_input_form_2" type="radio" value="up" name="place" checked>Верхняя
+                <input class="text_input_form_2" type="radio" value="up" name="place" checked required>Верхняя
             </div>
             <div>
-                <input class="text_input_form_2" type="radio" value="down-t" name="place" checked>Нижняя боковая
+                <input class="text_input_form_2" type="radio" value="down-t" name="place" checked required>Нижняя боковая
             </div>
             <div>
-                <input class="text_input_form_2" type="radio" value="up-t" name="place" checked>Верхняя боковая
+                <input class="text_input_form_2" type="radio" value="up-t" name="place" checked required>Верхняя боковая
             </div>
 
             <label>Наличие багажа</label>
             <div>
-                <input class="text_input_form_2" type="radio" value="with" name="things" checked>С багажом
+                <input class="text_input_form_2" type="radio" value="with" name="things" checked required>С багажом
             </div>
             <div>
-                <input class="text_input_form_2" type="radio" value="without" name="things" checked>Без багажа
+                <input class="text_input_form_2" type="radio" value="without" name="things" checked required>Без багажа
             </div>
         </div>
         <br>

@@ -7,31 +7,31 @@
     <form action="/lab3/biletfull">
         <label>ФИО</label>
         <div>
-            <input class="text_input_form" class="text_input_form" type="text" name="FIO" value="{{FIO or ''}}" required>
+            <input class="text_input_form" class="text_input_form" type="text" name="FIO" value="{{FIO or ''}}">
             <span class="error">{{ errors.FIO }}</span>
         </div>
         <br>
         <label>Возраст</label>
         <div>
-            <input class="text_input_form" type="number" name="age" value="{{age or ''}}" required>
+            <input class="text_input_form" type="number" name="age" value="{{age or ''}}"  >
             <span class="error">{{ errors.age }}</span>
         </div>
         <br>
         <label>Пункт выезда</label>
         <div>
-            <input class="text_input_form" type="text" name="wherefrom" value="{{wherefrom or ''}}" required>
+            <input class="text_input_form" type="text" name="wherefrom" value="{{wherefrom or ''}}"  >
             <span class="error">{{ errors.wherefrom }}</span>
         </div>
         <br>
         <label>Пункт назначения</label>
         <div>
-            <input class="text_input_form" type="text" name="whereto" value="{{whereto or ''}}" required>
+            <input class="text_input_form" type="text" name="whereto" value="{{whereto or ''}}"  >
             <span class="error">{{ errors.whereto }}</span>
         </div>
         <br>
         <label>Дата поездки</label>
         <div>
-            <input class="text_input_form" type="date" name="date" value="{{date or ''}}" required>
+            <input class="text_input_form" type="date" name="date" value="{{date or ''}}"  >
             <span class="error">{{ errors.date }}</span>
         </div>
         
@@ -39,32 +39,32 @@
         <div class="block_1">
             <label>Тип билета</label>
             <div>
-                <input class="text_input_form_2" type="radio" value="child" name="type" checked required>Детский
+                <input class="text_input_form_2" type="radio" value="child" name="type" checked  >Детский
             </div>
             <div>
-                <input class="text_input_form_2" type="radio" value="old" name="type" checked required>Взрослый
+                <input class="text_input_form_2" type="radio" value="old" name="type" checked  >Взрослый
             </div>
 
             <label>Полка</label>
             <div>
-                <input class="text_input_form_2" type="radio" value="down" name="place" checked required>Нижняя
+                <input class="text_input_form_2" type="radio" value="down" name="place" checked  >Нижняя
             </div>
             <div>
-                <input class="text_input_form_2" type="radio" value="up" name="place" checked required>Верхняя
+                <input class="text_input_form_2" type="radio" value="up" name="place" checked  >Верхняя
             </div>
             <div>
-                <input class="text_input_form_2" type="radio" value="down-t" name="place" checked required>Нижняя боковая
+                <input class="text_input_form_2" type="radio" value="down-t" name="place" checked  >Нижняя боковая
             </div>
             <div>
-                <input class="text_input_form_2" type="radio" value="up-t" name="place" checked required>Верхняя боковая
+                <input class="text_input_form_2" type="radio" value="up-t" name="place" checked  >Верхняя боковая
             </div>
 
             <label>Наличие багажа</label>
             <div>
-                <input class="text_input_form_2" type="radio" value="with" name="things" checked required>С багажом
+                <input class="text_input_form_2" type="radio" value="with" name="things" checked  >С багажом
             </div>
             <div>
-                <input class="text_input_form_2" type="radio" value="without" name="things" checked required>Без багажа
+                <input class="text_input_form_2" type="radio" value="without" name="things" checked  >Без багажа
             </div>
         </div>
         <br>

@@ -87,7 +87,3 @@ def bilet():
     place=request.args.get('place')
     things=request.args.get('things')
     return render_template('bilet.html',FIO=FIO,age=age,wherefrom=wherefrom,whereto=whereto,date=date,type=type,place=place,things=things,errors=errors)
-
-@lab3.route('/lab3/biletfull')
-def biletfull():
-    return render_template('biletfull.html')

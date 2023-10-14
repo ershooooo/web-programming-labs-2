@@ -87,3 +87,45 @@ def bilet():
     place=request.args.get('place')
     things=request.args.get('things')
     return render_template('bilet.html',FIO=FIO,age=age,wherefrom=wherefrom,whereto=whereto,date=date,type=type,place=place,things=things,errors=errors)
+
+
+@lab3.route('/lab3/zach_3')
+def zach_3():
+    n1=request.args.get('n1')
+    n2=request.args.get('n2')
+    n3=request.args.get('n3')
+    n4=request.args.get('n4')
+
+    if n1 and n2 and n3 and n4: 
+        n1=float(n1)
+        n2=float(n2)
+        n3=float(n3)
+        n4=float(n4)
+
+    numb=[n1,n2,n3,n4]
+    reslt=[]
+    for i in range (len(numb)):
+        if numb.count(numb[i])==1:
+            reslt=i+1
+    return render_template('zach_3.html',reslt=reslt,numb=numb,n1=n1,n2=n2,n3=n3,n4=n4)
+
+
+@lab3.route('/lab3/zach_3_1')
+def zach_3_1():
+    n=request.args.get('n')
+    x=request.args.get('x')
+    factorial = 1
+
+    if x is not None and n is not None:
+        n=int(n)
+        x=float(x)
+        res=x
+
+        for i in range (n):
+            factorial*=2*n+1
+            res+=((-1**i)*(x**(2*i+1)))/factorial
+
+    print(res)
+    return render_template('zach_3_1.html',res=res,n=n,x=x)
+
+    

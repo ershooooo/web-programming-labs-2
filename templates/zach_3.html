@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <title>
+        {% if name %}
+            {{ name }},
+        {% else %}
+            Анонимус,
+        {% endif %}
+        {{ number }} 
+    </title>
+</head>
+<body>
+    <header>
+        WEB-программирование, часть 2. {% if number %} Лабораторная работа 3{% endif %}
+    </header>
+
+    <main>
+        {% if n1 and n2 and n3 and n4 %}
+            <div>Первое задание</div>
+            <div>Порядковый номер отличного числа от других: {{reslt}}</div>
+            
+        {% else %}
+        <form>
+            <div>Первое задание</div>
+            <label>
+                <input class="text_input_form" type="number" name="n1" pattern="\d{1}"><br>
+            </label>
+            <label>
+                <input class="text_input_form" type="number" name="n2" pattern="\d{1}"><br>
+            </label>
+            <label>
+                <input class="text_input_form" type="number" name="n3" pattern="\d{1}"><br>
+            </label>
+            <label>
+                <input class="text_input_form" type="number" name="n4" pattern="\d{1}"><br>
+            </label>
+
+            <div class="block_2">
+                <button class="text_input_form" type="submit">Сформировать</button>
+            </div>
+        </form>
+            
+        {% endif %}
+        
+        
+
+    </main>
+</body>
+</html>

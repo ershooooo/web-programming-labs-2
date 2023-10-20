@@ -33,7 +33,7 @@ def login():
 def fridge():
     temp = request.form.get('temp')
     error=''
-
+    
     if request.method == 'GET':
         return render_template('4_fridge.html')
         
@@ -48,3 +48,47 @@ def fridge():
             error = 'Не удалось установить температуру: слишком высокое значение'
 
     return render_template('4_fridge.html',temp=temp,error=error)
+
+
+@lab4.route('/lab4/corn')
+def corn():
+    error=''
+    message=''
+    price=0
+    corn=request.form.get('corn')
+    weight=request.form.get('weight')
+    
+    if request.method == 'GET':
+        return render_template('4_fridge.html')
+
+    if weight:
+        weight=int(weight)
+
+        if weight < 0 or weight == 0:
+            error = 'Неверное значение веса'
+        if weight > 500:
+            error = 'Объем отсутствует в наличии'
+        if weight is None:
+            error = 'Не введен вес'
+
+        if weight > 50 and weight < 500:
+            sale = 0.9
+            message = 'Применена скидка за большой объем'
+        else:
+            sale = 1
+
+        #ячмень: 12 000 руб/т;
+        if corn == 'barley':
+            price = 12000 * weight * sale
+        #овёс: 8 500 руб/т;
+        elif corn == 'oats':
+            price = 8500 * weight * sale
+        #пшеница: 8 700 руб/т;
+        elif corn == 'wheat':
+            price = 8700 * weight * sale
+        #рожь: 14 000 руб/т.
+        else:
+            price = 14000 * weight * sale
+
+
+    return render_template('4_corn.html',corn=corn,weight=weight,price=price,error=error,message=message)

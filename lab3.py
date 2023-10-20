@@ -21,7 +21,7 @@ def form():
 
     sex = request.args.get('sex')
 
-    return render_template('form1.html', user=user, age=age, sex=sex,errors=errors,errorss=errorss)  
+    return render_template('3_form1.html', user=user, age=age, sex=sex,errors=errors,errorss=errorss)  
     
 
 @lab3.route('/lab3/order')
@@ -29,7 +29,7 @@ def order():
     drink=request.args.get('drink')
     milk=request.args.get('milk')
     sugar=request.args.get('sugar')
-    return render_template('order.html', drink=drink, milk=milk, sugar=sugar)
+    return render_template('3_order.html', drink=drink, milk=milk, sugar=sugar)
 
 @lab3.route('/lab3/pay')
 def pay():
@@ -53,12 +53,12 @@ def pay():
     name=request.args.get('name')
     cvv=request.args.get('cvv')
 
-    return render_template('pay.html',price=price,card=card,name=name,cvv=cvv)
+    return render_template('3_pay.html',price=price,card=card,name=name,cvv=cvv)
 
 
 @lab3.route('/lab3/succes')
 def succes():
-    return render_template('succes.html')
+    return render_template('3_succes.html')
 
 @lab3.route('/lab3/bilet')
 def bilet():
@@ -86,7 +86,7 @@ def bilet():
     type=request.args.get('type')
     place=request.args.get('place')
     things=request.args.get('things')
-    return render_template('bilet.html',FIO=FIO,age=age,wherefrom=wherefrom,whereto=whereto,date=date,type=type,place=place,things=things,errors=errors)
+    return render_template('3_bilet.html',FIO=FIO,age=age,wherefrom=wherefrom,whereto=whereto,date=date,type=type,place=place,things=things,errors=errors)
 
 
 @lab3.route('/lab3/zach_3')

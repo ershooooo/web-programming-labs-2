@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block lab %}Лабораторная работа 4{% endblock %}
+
+{% block main %}
+    <h1>Холодильник</h1>
+    {% if (temp>-13) and (-8>temp) %}
+        <div>Установлена температура: {{temp}} &#x2103; <span class="snow">&#10052;&#10052;&#10052;</span></div>    
+        <div><a href="/lab4/fridge">Заказать снова</a></div>
+    
+        <br>
+    {% else %}
+        <form method="post">
+            <div>
+                <label for="password">Введите температуру &#x2103;:</label>
+                <br>
+                <input class="text_input_form" type="number" id="temp" name="temp" value={{temp}}>
+            </div>
+            <br>
+            <span class="error">{{error}}</span>
+            <div>
+                <br>
+                <button class="text_input_form" type="submit">Установить температуру</button>
+            </div>
+            <br>
+        </form>
+    {% endif %}
+{% endblock %}

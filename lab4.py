@@ -31,11 +31,11 @@ def login():
 
 @lab4.route('/lab4/fridge', methods=['GET','POST'])
 def fridge():
-    temp = request.form.get('temp')
-    error=''
-    
     if request.method == 'GET':
         return render_template('4_fridge.html')
+   
+    temp = request.form.get('temp')
+    error=''
         
     if temp:
         temp=int(temp)

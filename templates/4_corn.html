@@ -3,7 +3,8 @@
 {% block lab %}Лабораторная работа 4{% endblock %}
 
 {% block main %}
-    {% if corn and weight %}
+
+    {% if (weight > 0) and (501 > weight) and corn %}
         <div>Заказ успешно сформирован.</div>
         <div>Вы заказали {{corn}}.</div>
         <div>Вес: {{weight}} т.</div>
@@ -12,10 +13,9 @@
         <br>
         <div><a href="/lab4/corn">Заказать снова</a></div>
         <br>
-    
+
     {% else %}
         <h1>Заказ Зерна</h1>
-        <span class="error">{{error}}</span>
         <form method="post">
             <div>Выберете зерно:</div>
             <select class="text_input_form" name="corn" id="corn">
@@ -31,7 +31,8 @@
                 <button class="text_input_form" type="submit">Оформить заказ</button>
             </div>
             <br>
+            <div><span class="error">{{error}}</span></div><br>
         </form>
     {% endif %}
-  
+
 {% endblock %}

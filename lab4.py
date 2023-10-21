@@ -50,45 +50,48 @@ def fridge():
     return render_template('4_fridge.html',temp=temp,error=error)
 
 
-@lab4.route('/lab4/corn')
+@lab4.route('/lab4/corn', methods=['GET','POST'])
 def corn():
-    #error=''
-    message=''
-    #price=0
+    if request.method == 'GET':
+        return render_template('4_corn.html')
+    
     corn=request.form.get('corn')
     weight=request.form.get('weight')
-    
-    if request.method == 'GET':
-        return render_template('4_fridge.html')
+    message=''
+    error=''
+    price=''
 
-    #if weight:
-        #weight=int(weight)
+    #Ошибка нулевого значения
+    if weight == '':
+        error = 'Не введен вес'
+    else:
+    #Перевод в числовой формат
+        weight=int(weight)
 
-        #if weight < 0 or weight == 0:
-            #error = 'Неверное значение веса'
-        #if weight > 500:
-            #error = 'Объем отсутствует в наличии'
-        #if weight is None:
-            #error = 'Не введен вес'
-
-    #if weight > 50 and weight < 500:
-        #sale = 0.9
-        #message = 'Применена скидка за большой объем'
-    #else:
-        #sale = 1
+        #Ошибки
+        if weight < 0 or weight == 0:
+            error = 'Неверное значение веса'
+        elif weight > 500:
+            error = 'Объем отсутствует в наличии'
+        
+        #Расчет скидки
+        if weight > 50:
+            sale = 0.9
+            message = 'Применена скидка за большой объем'
+        else:
+            sale = 1
 
         #ячмень: 12 000 руб/т;
-    if corn == 'barley':
-        price = 12000 * weight * sale
+        if corn == 'barley':
+            price = 12000 * weight * sale
         #овёс: 8 500 руб/т;
-    elif corn == 'oats':
-        price = 8500 * weight * sale
+        elif corn == 'oats':
+            price = 8500 * weight * sale
         #пшеница: 8 700 руб/т;
-    elif corn == 'wheat':
-        price = 8700 * weight * sale
+        elif corn == 'wheat':
+            price = 8700 * weight * sale
         #рожь: 14 000 руб/т.
-    else:
-        price = 14000 * weight * sale
+        else:
+            price = 14000 * weight * sale
 
-
-    return render_template('4_corn.html',corn=corn,weight=weight,price=price)
+    return render_template('4_corn.html',corn=corn,weight=weight,price=price,message=message,error=error)

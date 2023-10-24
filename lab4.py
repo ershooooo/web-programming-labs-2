@@ -36,18 +36,29 @@ def fridge():
    
     temp = request.form.get('temp')
     error=''
-        
-    if temp:
-        temp=int(temp)
 
-        #if temp == '':
-            #error = 'Ошибка: не задана температура'
-        if temp <-12:
-            error = 'Не удалось установить температуру: слишком низкое значение'
-        if temp >-1:
-            error = 'Не удалось установить температуру: слишком высокое значение'
+    if temp == '':
+        error = 'Не введен вес'
+    else:
+        if temp:
+            temp=int(temp)
+            if (temp>-13) and 0>temp:
+                if (temp>-13) and (-8>temp):
+                    snow = '❄️❄️❄️'
+                elif (temp>-9) and (-4>temp):
+                    snow = '❄️❄️'
+                elif (temp>-5) and (0>temp):
+                    snow = '❄️'
+                return render_template('4_success_fridge.html',temp=temp,snow=snow)
+
+            if temp <-12:
+                error = 'Не удалось установить температуру: слишком низкое значение'
+            if temp >-1:
+                error = 'Не удалось установить температуру: слишком высокое значение'
 
     return render_template('4_fridge.html',temp=temp,error=error)
+
+    
 
 
 @lab4.route('/lab4/corn', methods=['GET','POST'])
@@ -59,7 +70,6 @@ def corn():
     weight=request.form.get('weight')
     message=''
     error=''
-    price=''
 
     #Ошибка нулевого значения
     if weight == '':

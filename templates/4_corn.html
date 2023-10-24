@@ -4,35 +4,22 @@
 
 {% block main %}
 
-    {% if (weight > 0) and (501 > weight) and corn %}
-        <div>Заказ успешно сформирован.</div>
-        <div>Вы заказали {{corn}}.</div>
-        <div>Вес: {{weight}} т.</div>
-        <div>Сумма к оплате: {{price}} руб.</div>
-        <div>{{message}}</div>
-        <br>
-        <div><a href="/lab4/corn">Заказать снова</a></div>
-        <br>
-
-    {% else %}
-        <h1>Заказ Зерна</h1>
-        <form method="post">
-            <div>Выберете зерно:</div>
-            <select class="text_input_form" name="corn" id="corn">
-                <option value="barley">Ячмень</option>
-                <option value="oats">Овёс</option>
-                <option value="wheat">Пшеница</option>
-                <option value="rye">Рожь</option>
-            </select>
-            <div><br>Введите вес,т:</div>
-            <input class="text_input_form" type="number" id="weight" name="weight" value={{weight}}>
-            <div>
-                <br>
-                <button class="text_input_form" type="submit">Оформить заказ</button>
-            </div>
+    <h1>Заказ Зерна</h1>
+    <form method="post">
+        <div>Выберете зерно:</div>
+        <select class="text_input_form" name="corn" id="corn">
+            <option value="barley">Ячмень</option>
+            <option value="oats">Овёс</option>
+            <option value="wheat">Пшеница</option>
+            <option value="rye">Рожь</option>
+        </select>
+        <div><br>Введите вес,т:</div>
+        <input class="text_input_form" type="number" id="weight" name="weight" value={{weight}}>
+        <div>
             <br>
-            <div><span class="error">{{error}}</span></div><br>
-        </form>
-    {% endif %}
-
+            <button class="text_input_form" type="submit">Оформить заказ</button>
+        </div>
+        <br>
+        <div><span class="error">{{error}}</span></div><br>
+    </form>
 {% endblock %}

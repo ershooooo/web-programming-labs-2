@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, make_response
 lab4 = Blueprint('lab4',__name__)
 
 
@@ -113,14 +113,14 @@ def corn():
     return render_template('4_corn.html',corn=corn,weight=weight,error=error)
 
 
-@lab4.route('/lab4/cookies', methods = ['GET', 'POST'])
+@lab4.route('/lab4/cookies', methods=['GET','POST'])
 def cookies():
-    if request.method == 'GET':
-        return render_template ('cookies.html')
-        
+    resp = make_response(render_template('cookies.html'))
     color = request.form.get('color')
-    headers = {
-        'Set-Cookie' : 'color=' + color + '; path=/',
-        'Location' : '/lab4/cookies'
-    }
-    return '', 303, headers
+    background_color = request.form.get('background-color')
+    font_size = request.form.get('font-size')
+    if color and background_color and font_size:
+        resp.set_cookie('color',color)
+        resp.set_cookie('background-color',background_color)
+        resp.set_cookie('font-size',f"{font_size}px")
+    return resp 

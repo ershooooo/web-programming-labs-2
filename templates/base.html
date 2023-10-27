@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Трубицына Алиса, Ершова Клара. {% block lab %}{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    {% if request.cookies.get('color') %}
+    <style>
+        body {
+            color: {{ request.cookies.get('color') }};
+        }
+    </style>
+    {% endif %}
 </head>
 <body>
     <header>

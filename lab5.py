@@ -28,3 +28,24 @@ def main():
 
     print(result)
     return "go to console"
+
+@lab5.route('/lab5/users')
+def get_users():
+
+    conn = psycopg2.connect(
+        host="127.0.0.1",
+        database="knowledge_base_for_ersh_trub",
+        user="ersh_trub_knowledge_base",
+        password="ershtrub123")
+    cur = conn.cursor()
+    
+    cur.execute("SELECT username FROM users;")
+    result = cur.fetchall()
+
+    cur.close()
+    conn.close()
+
+    username = ""
+    for row in result:
+        username += f"{row[0]}\n"
+    return username

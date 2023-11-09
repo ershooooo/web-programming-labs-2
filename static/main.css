@@ -139,15 +139,25 @@ a {
 .bl_5_4{
     margin-top: -30px;
     margin-left: -30px;
-
 }
 .bl_5_5{
     font-weight: lighter;
     margin-left:1300px;
     margin-top: -40px;
-    
 }
 .bl_5_photo_1{
     width: 300px;
     margin-top: 20px;
+}
+.bl_5_6{margin-top: 20px;}
+.error_2{
+    font-size: 20px;
+    color: crimson;
+    background-color: #e7b9b9;
+    background-clip: padding-box;
+    border: 1px solid crimson;
+    border-radius: 0.25rem;
+    width: 400px;
+    margin-top: 20px;
+    text-align: center;
 }

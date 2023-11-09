@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block lab %}Лабораторная работа 5{% endblock %}
+
+{% block main %}
+    <form method="POST">
+        <h1>Страница регистрации</h1>
+        <div><label for="username">Логин</label></div>
+        <input class="text_input_form" type="text" name="username" placeholder="username">
+        <div><label for="password">Пароль</label></div>
+        <input  class="text_input_form" type="text" name="password" placeholder="password">
+
+        <div><button class="text_input_form bl_5_6" type="submit">Зарегистрироваться</button></div>
+        <div class="error_2"><span>{{errors}}</span></div>
+    </form>
+{% endblock %}

@@ -1,4 +1,5 @@
-from flask import Blueprint, render_template, request, make_response, redirect
+from werkzeug.security import check_password_hash, generate_password_hash
+from flask import Blueprint, render_template, request, make_response, redirect, session
 import psycopg2
 
 lab5 = Blueprint('lab5',__name__)
@@ -45,11 +46,11 @@ def get_users():
 
 @lab5.route('/lab5/register', methods=['GET','POST'])
 def registerPage():
-    errors=[]
+    errors=''
 
     # Если это метод GET, то верни шаблон и заверши выполнение
     if request.method=='GET':
-        return render_template('register.html',errors=errors)
+        return render_template('5_register.html',errors=errors)
     
     # Если мы попали сюда, значит это метод POST, так как GET мы уже обработали и сделали return.
     # После return функция немедленно завершается
@@ -60,7 +61,10 @@ def registerPage():
     # Если любой из них пустой, то добавляем ошибку и рендерим шаблон
     if username =='' or password == '':
         errors='Пожалуйста, заполните все поля'
-        return render_template('register.html',errors=errors)
+        return render_template('5_register.html',errors=errors)
+
+    # Получаем пароль от пользователя, хэруем его
+    hashPassword = generate_password_hash(password)
 
     # Если мы попали сюда, значит username и password заполнены
     # Подключаемся к БД
@@ -78,14 +82,56 @@ def registerPage():
         errors='Пользователь с данным именем уже существует'
         
         dbClose(cur,conn)
-        return render_template('register.html',errors=errors)
+        return render_template('5_register.html',errors=errors)
 
     # Если мы попали сюда, то значит в cur.fetchone нет ни одной строки
     # Значит пользователя с таким же логином не существует
-    cur.execute(f"INSERT INTO users (username,password) VALUES ('{username}','{password}');")
+    cur.execute(f"INSERT INTO users (username,password) VALUES ('{username}','{hashPassword}');")
 
     # Делаем commit - фиксируем изменения
     conn.commit()
     dbClose(cur,conn)
 
     return redirect('/lab5/login')
+
+
+@lab5.route('/lab5/login', methods=['GET','POST'])
+def loginPage():
+    errors=''
+
+    if request.method=='GET':
+        return render_template('5_login.html',errors=errors)
+    
+    username=request.form.get('username')
+    password=request.form.get('password')
+
+    if username =='' or password == '':
+        errors='Пожалуйста, заполните все поля'
+        return render_template('5_login.html',errors=errors)
+
+    conn = dbConnect()
+    cur = conn.cursor()
+
+    cur.execute(f"SELECT id, password FROM users WHERE username = '{username}'")
+
+    result = cur.fetchall()
+
+    if not result:
+        errors='Неправильный логин или пароль'
+        dbClose(cur,conn)
+        return render_template('5_login.html',errors=errors)
+
+    userID = result[0][0]
+    hashPassword = result[0][1]
+
+    # Сравниваем хэш и пароль
+    if check_password_hash(hashPassword,password):
+        # Сохраняем id и username в сессию 
+        session['id']=userID
+        session['username']=username
+        dbClose(cur,conn)
+        return redirect('/lab5')
+
+    else:
+        errors='Неправильный логин или пароль'
+        return render_template('5_login.html',errors=errors)

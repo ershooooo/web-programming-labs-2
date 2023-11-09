@@ -106,3 +106,48 @@ a {
 .snow{
     color: blue;
 }
+
+.lab5{
+    color: mediumvioletred;
+    font-weight: bold;
+    font-size: 40px;}
+.bl_5_1{
+    font-size: 25px;
+    font-weight: lighter;
+    margin-left: 300px;
+    margin-top: -40px;}
+.bl_5_2{
+    margin-left: 600px;
+    margin-top: -28px;}
+.bl_5_button{
+    font-size: 20px;
+    color: rgb(160, 128, 196);
+    font-weight: bold;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 2px solid rgb(160, 128, 196);
+    border-radius: 0.25rem;
+    height: 30px;
+    width: 200px;}
+.bl_5_button_2{
+    margin-left: 1100px;
+    background-color: rgb(160, 128, 196);
+    color: rgb(255, 255, 255);}
+.bl_5_3{
+    margin-top: -25px;
+    margin-left:850px;}
+.bl_5_4{
+    margin-top: -30px;
+    margin-left: -30px;
+
+}
+.bl_5_5{
+    font-weight: lighter;
+    margin-left:1300px;
+    margin-top: -40px;
+    
+}
+.bl_5_photo_1{
+    width: 300px;
+    margin-top: 20px;
+}

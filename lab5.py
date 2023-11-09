@@ -22,19 +22,9 @@ def dbClose(cursor,connection):
 
 @lab5.route('/lab5')
 def main():
+    visibleUser='Anon'
 
-    conn = dbConnect()
-    # Получаем курсор. С помощью него мы можем выполнять sql-запросы
-    cur=conn.cursor()
-
-    # Пишем запрос, который psycopg2 должен выполнить
-    cur.execute("SELECT * FROM users;")
-    # fetchall - получить все строки, которые получились в результате выполнения sql -запроса в execute
-    # Сохраняем эти строки в перемннную RESULT
-    result=cur.fetchall()
-    print(result)
-    dbClose(cur,conn)
-    return "go to console"
+    return render_template('5_main.html',username=visibleUser)
 
 @lab5.route('/lab5/users')
 def get_users():

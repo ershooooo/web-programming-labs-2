@@ -5,11 +5,15 @@
 {% block main %}
 <div>
 <h1>Новая заметка</h1>
-<div class="errors"><span>{{ errors }}</span></div>
+<div class="error_2"><span>{{ errors }}</span></div>
     <form method="POST">
-        <input name="title_article" type="text" placeholder="Название статьи">
-        <textarea name="text_article" placeholder="Текст статьи" rows="20"></textarea>
-        <input type="submit" value="Apply" />
+        <input name="title_article" class='article_1' type="text" placeholder="Название статьи">
+        <br>
+        <textarea class='article_2' name="text_article" placeholder="Текст статьи" rows="20"></textarea>
+        <br>
+        <input class="bl_5_button" type="submit" value="Apply" />
     </form>
 </div>
+<br>
+<form action="/lab5"><input class="bl_5_button" type="submit" value="Главная страница" /></form>
 {% endblock %}

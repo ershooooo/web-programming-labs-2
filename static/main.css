@@ -155,9 +155,22 @@ a {
     color: crimson;
     background-color: #e7b9b9;
     background-clip: padding-box;
-    border: 1px solid crimson;
     border-radius: 0.25rem;
     width: 400px;
     margin-top: 20px;
     text-align: center;
+}
+
+.article_1{
+    text-align: center;
+    border: 3px solid  rgb(160, 128, 196);
+    background-color: rgb(195, 185, 226);
+    height: 30px;
+    width: 1100px;
+}
+.article_2{
+    border: 3px solid  rgb(160, 128, 196);
+    background-color: rgb(195, 185, 226);
+    width: 1100px;
+    margin-top: 20px;
 }

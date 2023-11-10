@@ -7,13 +7,11 @@
     
     <form class="bl_5_4" action="/lab5/register" target="_blank"><button  class="bl_5_button bl_5_button_2">Регистрация</button></form>
     <div class="lab5 bl_5_5">{{username}}</div>
-    <div  class="bl_5_1"><a href="/lab5" target="_blank">Просмотреть заметки</a></div>
-    <div class="bl_5_1 bl_5_2"><a href="/lab5" target="_blank">Создать заметку</a></div>
+    <div  class="bl_5_1"><a href="/lab5/spisok_article" target="_blank">Просмотреть заметки</a></div>
+    <div class="bl_5_1 bl_5_2"><a href="/lab5/new_article" target="_blank">Создать заметку</a></div>
     <form class="bl_5_3" action='/lab5/login' target="_blank"><button  class="bl_5_button">Логин</button></form>
 
     <div ><img class="bl_5_photo_1" src="..\static\ph_5_1.png"></div>
-    <form action="/lab5/logout">
-        <input type="submit" value="Logout" />
-    </form>
+    <form action="/lab5/logout"><input class="bl_5_button" type="submit" value="LogOut" /></form>
     
 {% endblock %}

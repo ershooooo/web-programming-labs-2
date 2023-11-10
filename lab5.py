@@ -9,7 +9,6 @@ def dbConnect():
     # Прописываем параметры подключения к БД
     conn = psycopg2.connect(
         host="127.0.0.1",
-        port="5433",
         database="knowledge_base_for_ersh_trub",
         user="ersh_trub_knowledge_base",
         password="ershtrub123")
@@ -193,7 +192,6 @@ def getArticle(article_id):
             return "Not found!"
 #Разбиваем строку на массив по "Enter", чтобы с помощью цикла for в jinja разбить статью на параграфы
         text = articleBody[1].splitlines()
-
         return render_template("articleN.html", article_text=text,article_title=articleBody[0], username=session.get("username"))
 
 @lab5.route("/lab5/spisok_article") 
@@ -204,18 +202,23 @@ def seeArticle():
         conn = dbConnect() 
         cur = conn.cursor() 
         cur.execute(f"SELECT title FROM articles WHERE user_id = '{userID}'") 
- 
-        articleBody = cur.fetchall() 
- 
+
+        result = cur.fetchall() 
+    
         dbClose(cur,conn) 
- 
-        if articleBody is None: 
+
+        if result is None: 
             return "Not found!" 
-        return render_template("spisok_article.html", article_title=articleBody,article_id = id, username=session.get("username"))
+
+        title=''
+        for row  in result:
+            title += f"{row[0]}\n"
+        return render_template("spisok_article.html", article_title=result,article_id = id, username=session.get("username"))
+    return redirect("/lab5/login")
 
 @lab5.route("/lab5/logout")
 def logOut():
 
     session.clear()
-    return render_template('5_login.html')
+    return render_template('5_main.html')
     

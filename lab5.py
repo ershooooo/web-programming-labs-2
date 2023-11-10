@@ -195,3 +195,23 @@ def getArticle(article_id):
         text = articleBody[1].splitlines()
 
         return render_template("articleN.html", article_text=text,article_title=articleBody[0], username=session.get("username"))
+
+@lab5.route("/lab5/spisok_article") 
+def seeArticle(): 
+    userID = session.get("id") 
+ 
+    if userID is not None: 
+        conn = dbConnect() 
+        cur = conn.cursor() 
+        cur.execute(f"SELECT title FROM articles WHERE user_id = '{userID}'") 
+ 
+        articleBody = cur.fetchall() 
+ 
+        dbClose(cur,conn) 
+ 
+        if articleBody is None: 
+            return "Not found!" 
+        return render_template("spisok_article.html", article_title=articleBody,article_id = id, username=session.get("username"))
+
+
+    

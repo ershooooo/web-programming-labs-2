@@ -202,18 +202,14 @@ def seeArticle():
         conn = dbConnect() 
         cur = conn.cursor() 
         cur.execute(f"SELECT title FROM articles WHERE user_id = '{userID}'") 
-
-        result = cur.fetchall() 
-    
+ 
+        articleBody = cur.fetchall() 
+ 
         dbClose(cur,conn) 
-
-        if result is None: 
+ 
+        if articleBody is None: 
             return "Not found!" 
-
-        title=''
-        for row  in result:
-            title += f"{row[0]}\n"
-        return render_template("spisok_article.html", article_title=result,article_id = id, username=session.get("username"))
+        return render_template("spisok_article.html", article_title=articleBody,article_id = id, username=session.get("username"))
     return redirect("/lab5/login")
 
 @lab5.route("/lab5/logout")

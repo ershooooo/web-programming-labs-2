@@ -213,5 +213,9 @@ def seeArticle():
             return "Not found!" 
         return render_template("spisok_article.html", article_title=articleBody,article_id = id, username=session.get("username"))
 
+@lab5.route("/lab5/logout")
+def logOut():
 
+    session.clear()
+    return render_template('5_login.html')
     

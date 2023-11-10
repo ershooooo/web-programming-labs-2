@@ -9,6 +9,7 @@ def dbConnect():
     # Прописываем параметры подключения к БД
     conn = psycopg2.connect(
         host="127.0.0.1",
+        port="5433",
         database="knowledge_base_for_ersh_trub",
         user="ersh_trub_knowledge_base",
         password="ershtrub123")
@@ -23,8 +24,11 @@ def dbClose(cursor,connection):
 
 @lab5.route('/lab5')
 def main():
-    visibleUser='Anon'
-
+    username=session.get("username")
+    if username =='':
+        visibleUser='Anon'
+    else:
+        visibleUser=username
     return render_template('5_main.html',username=visibleUser)
 
 @lab5.route('/lab5/users')
@@ -95,6 +99,7 @@ def registerPage():
     return redirect('/lab5/login')
 
 
+
 @lab5.route('/lab5/login', methods=['GET','POST'])
 def loginPage():
     errors=''
@@ -135,3 +140,42 @@ def loginPage():
     else:
         errors='Неправильный логин или пароль'
         return render_template('5_login.html',errors=errors)
+
+
+#Создание роута для добавления статей
+@lab5.route("/lab5/new_article", methods=['GET','POST'])
+def createArticle():
+    errors = ''
+#Проверяем авторизирован ли пользователь
+#Мы читаем из JWT токена(session.get) ID пользователя
+    userID = session.get("id")
+    if userID is not None:
+#Пользователь авторизирован, мы прочитали jwt-токен
+#Проверили его валидность. Получили его id.
+        if request.method == "GET":
+            return render_template("new_article.html")
+        if request.method == "POST":
+            text_article = request.form.get("text_article")
+            title = request.form.get("title_article")
+            if len(text_article) == 0:
+                errors = 'Заполните текст'
+                return render_template("new_article.html", errors=errors)
+            conn = dbConnect()
+            cur = conn.cursor()
+
+            cur.execute(f"INSERT INTO articles(user_id, title, article_text) VALUES ({userID}, '{title}','{text_article}') RETURNING id")
+#Получаем id от вновь созданной записи
+#В нашем случае мы будем получать статьи следующим образом
+#/lab5/articles/id_articles
+            new_article_id = cur.fetchone()[0]
+            conn.commit()
+
+            dbClose(cur,conn)
+#Делаем редирект на новую статью
+#Пока этот роут не сделан, будет ошибка
+#Чтобы получить статью под номером 5, необходимо ввести в роут /lab5/articles/5
+            return redirect(f"/lab5/articles/{new_article_id}")
+#Пользователь не авторизирован, отправить на страницу логина
+    return redirect("/lab5/login")
+
+

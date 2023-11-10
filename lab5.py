@@ -178,4 +178,20 @@ def createArticle():
 #Пользователь не авторизирован, отправить на страницу логина
     return redirect("/lab5/login")
 
+@lab5.route("/lab5/articles/<string:article_id>")
+def getArticle(article_id):
+    userID = session.get("id")
+    if userID is not None:
+        conn = dbConnect()
+        cur =conn.cursor()
 
+        cur.execute("SELECT title, article_text FROM articles WHERE id = %s and user_id = %s",(article_id, userID))
+        articleBody = cur.fetchone()
+        dbClose(cur,conn)
+
+        if articleBody is None:
+            return "Not found!"
+#Разбиваем строку на массив по "Enter", чтобы с помощью цикла for в jinja разбить статью на параграфы
+        text = articleBody[1].splitlines()
+
+        return render_template("articleN.html", article_text=text,article_title=articleBody[0], username=session.get("username"))

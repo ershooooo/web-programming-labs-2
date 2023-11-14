@@ -10,6 +10,10 @@ class users(db.Model):
     username = db.Column(db.String(30), nullable=False, unique=True)
     password = db.Column(db.String(102), nullable=False)
 
+    def __repr__(self):
+        return f'id:{self.id}, username:{self.username}'
+        
+
 class articles(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
@@ -18,3 +22,6 @@ class articles(db.Model):
     is_favorite = db.Column(db.Boolean)
     is_public = db.Column(db.Boolean)
     likes = db.Column(db.Integer)
+
+    def __repr__(self):
+        return f'id:{self.id},title:{self.title}, article_text:{self.article_text}'

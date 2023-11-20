@@ -68,3 +68,35 @@ def register():
 
    #Перенаправление на страницу логина
     return redirect('/lab6/login')
+
+@lab6.route("/lab6/login",methods=["GET","POST"])
+def login():
+    if request.method=='GET':
+        return render_template('5_login.html')
+
+    errors=''
+    username_form=request.form.get('username')
+    password_form=request.form.get('password')
+
+    #Ошибка: поля не заполнены
+    if username_form =='' or password_form == '':
+        errors='Пожалуйста, заполните все поля'
+        return render_template('5_login.html',errors=errors)
+
+    my_user = users.query.filter_by(username=username_form).first()
+
+    #Ошибка: пользователь отсутствует    
+    if my_user is None:
+        errors='Такой пользователь отсутствует'
+        return render_template('5_login.html',errors=errors)
+
+    if not check_password_hash(my_user.password, password_form):
+        errors = 'Введен неправильный пароль'
+        return render_template('5_login.html', errors=errors)
+
+    if my_user is not None:
+        if check_password_hash(my_user.password, password_form):
+            #Сохраняем JWT токен
+            login_user(my_user,remember=False)
+            return redirect('/lab6/articles')
+    return render_template('login.html')

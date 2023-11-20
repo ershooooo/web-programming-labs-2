@@ -5,7 +5,7 @@ from flask_login import UserMixin
 #Описываем схему нашей БД в виде оюъектов таким образом, создание таблиц (схемы БД)
 #Возьмет на себя SQLAlchemy - система ORM.abs
 
-class users(db.Model):
+class users(db.Model,UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(30), nullable=False, unique=True)
     password = db.Column(db.String(102), nullable=False)

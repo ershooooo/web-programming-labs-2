@@ -12,6 +12,7 @@ from lab5 import lab5
 from lab6 import lab6
 
 app = Flask(__name__)
+
 app.secret_key='321'
 user_db = "ersh_trub_knowledge_base_orm"
 host_ip = "127.0.0.1"
@@ -21,8 +22,17 @@ password = "123"
 
 app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{user_db}:{password}@{host_ip}:{host_port}/{database_name}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
 db.init_app(app)
+
+#Подключение Flask-Login
+login_manager=LoginManager()
+#Направление пользователя, если нет авторизации
+login_manager.login_view = 'lab6.login'
+login_manager.init_app(app)
+#Где и как находить пользователя
+@login_manager.user_loader
+def load_users(user_id):
+    return users.query.get(int(user_id))
 
 app.register_blueprint(lab1)
 app.register_blueprint(lab2)

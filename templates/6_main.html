@@ -13,5 +13,10 @@
 
     <div ><img class="bl_5_photo_1" src="..\static\ph_5_1.png"></div>
     <form action="/lab6/logout"><input class="bl_5_button" type="submit" value="LogOut" /></form>
-    
+    <h1>Опубликованные статьи</h1> 
+    <ul>
+        {% for article in public_articles %}
+        <a href="/lab6/articles/{{ article.id }}">{{ article.title }}</a>
+        {% endfor %}
+    </ul>
 {% endblock %}

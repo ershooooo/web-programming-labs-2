@@ -108,13 +108,12 @@ def articles_list():
     return render_template('spisok_article.html',articles=my_articles)
 
 @lab6.route("/lab6/articles/<int:article_id>")
-@login_required
 def get_article(article_id):
-    article = articles.query.filter_by(id=article_id, user_id=current_user.id).first()
+    article = articles.query.filter_by(id=article_id).first()
     if article is None:
         return "Not found!"
     text = article.article_text.splitlines()
-    return render_template("articleN.html", article_text=text, article_title=article.title, username=current_user.username)
+    return render_template("articleN.html", article_text=text, article_title=article.title)
 
 @lab6.route('/lab6/logout')
 @login_required
@@ -130,12 +129,15 @@ def createArticle():
     if request.method == "GET":
         return render_template("new_article.html")
     if request.method == "POST":
+        is_public = False
         text_article = request.form.get("text_article")
         title = request.form.get("title_article")
         if len(text_article) == 0:
             errors = 'Заполните текст'
             return render_template("new_article.html", errors=errors)
-        new_article = articles(user_id=current_user.id, title=title, article_text=text_article)
+        if 'is_public' in request.form:
+            is_public = True
+        new_article = articles(user_id=current_user.id, title=title, article_text=text_article, is_public=is_public)
         db.session.add(new_article)
         db.session.commit()
         
@@ -150,4 +152,6 @@ def all():
     else:
         # если пользователь не авторизирован
         visibleUser = 'Anon'
-    return render_template('6_main.html', username=visibleUser)
+    public_articles = articles.query.filter_by(is_public=True).all()
+    return render_template('6_main.html', username=visibleUser,public_articles=public_articles)
+

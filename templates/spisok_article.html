@@ -1,13 +1,14 @@
 {% extends "base.html" %} 
  
 {% block lab %}Лабораторная работа 6{% endblock %} 
- 
+
 {% block main %} 
 <h1>Список статей</h1> 
- 
 <ul> 
   {% for article in articles %}
-    <li><a href="/lab6/articles/{{ article.id }}">{{ article.title }}</a></li>
+    <li>
+      <a href="/lab6/articles/{{ article.id }}">{{ article.title }}</a>
+    </li>
   {% endfor %}
 </ul> 
 <form action="/lab6"><input class="bl_5_button" type="submit" value="Главная страница" /></form>

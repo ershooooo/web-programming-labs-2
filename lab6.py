@@ -143,7 +143,6 @@ def createArticle():
         
         return redirect(f"/lab6/articles/{new_article.id}")
 
-
 @lab6.route('/lab6')
 def all():
     if current_user.is_authenticated:
@@ -155,3 +154,16 @@ def all():
     public_articles = articles.query.filter_by(is_public=True).all()
     return render_template('6_main.html', username=visibleUser,public_articles=public_articles)
 
+@lab6.route("/lab6/articles/<int:article_id>/like", methods=['POST'])
+@login_required
+def like_article(article_id):
+    article = articles.query.get(article_id)
+    if not article:
+        return "Not found!"
+
+    if article.likes is None:
+        article.likes = 0
+    article.likes += 1
+    db.session.commit()
+
+    return redirect(f"/lab6")

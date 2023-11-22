@@ -16,7 +16,11 @@
     <h1>Опубликованные статьи</h1> 
     <ul>
         {% for article in public_articles %}
-        <a href="/lab6/articles/{{ article.id }}">{{ article.title }}</a>
+            <a href="/lab6/articles/{{ article.id }}">{{ article.title }}</a>
+            <form action="{{ url_for('lab6.like_article', article_id=article.id) }}" method="post" style="display:inline">
+                <button type="submit" class="bl_6_button">Like</button>
+            </form>
+            <span> : {{ article.likes }}</span>
         {% endfor %}
     </ul>
 {% endblock %}

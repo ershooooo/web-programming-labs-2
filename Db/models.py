@@ -21,7 +21,7 @@ class articles(db.Model):
     article_text = db.Column(db.Text, nullable=False)
     is_favorite = db.Column(db.Boolean, default=False)
     is_public = db.Column(db.Boolean, default=False)
-    likes = db.Column(db.Integer)
+    likes = db.Column(db.Integer,default=0)
 
     def __repr__(self):
         return f'id:{self.id},title:{self.title}, article_text:{self.article_text}'

@@ -25,11 +25,17 @@ def menu():
 
         <h1>Список лабораторных</h1>
         <menu>
-        <a href="/lab1/" target="_blank">Лабораторная работа 1</a>
-        <a href="/lab2/" target="_blank">Лабораторная работа 2</a>
-        <a href="/lab3/" target="_blank">Лабораторная работа 3</a>
-        <a href="/lab4/" target="_blank">Лабораторная работа 4</a>
-        <a href="/lab5" target="_blank">Лабораторная работа 5</a>
+            <div>
+                <ul>
+                    <li><a href="/lab1/" target="_blank">Лабораторная работа 1</a></li>
+                    <li><a href="/lab2/" target="_blank">Лабораторная работа 2</a></li>
+                    <li><a href="/lab3/" target="_blank">Лабораторная работа 3</a></li>
+                    <li><a href="/lab4/" target="_blank">Лабораторная работа 4</a></li>
+                    <li><a href="/lab5" target="_blank">Лабораторная работа 5</a></li>
+                    <li><a href="/lab6" target="_blank">Лабораторная работа 6</a></li>
+                    <li><a href="/lab7/" target="_blank">Лабораторная работа 7</a></li>
+                </ul>
+            </div>
         </menu>
 
         <footer>

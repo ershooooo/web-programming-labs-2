@@ -41,3 +41,7 @@ a {
      text-shadow: 7px 5px 2px rgb(168, 117, 190);
      transition: all 0.3s;
  }
+
+ ul{
+    list-style-type: none;
+}

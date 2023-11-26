@@ -32,7 +32,21 @@
     </div>
 
     <div id="price"></div>
+    <br>
 
-    <img src="..\static\drink.jpg" class='pic'>
-
+    <div id="pay" style="display: none;">
+        <div>Номер банковской карты:</div>
+        <label><input class="text_input_form" type="text" name="card"></label>
+        <div>Имя держателя карты:</div>
+        <label><input class="text_input_form" type="text" name="name"></label>
+        <div>Номер CVV:</div>
+        <label><input class="text_input_form" type="text" name="cvv" size="3"></label>
+        <div><br><button class="text_input_form" type="submit" onclick="pay()">Оплатить</button></div>
+        <br>
+        <div id="error" class="error_2"></div>
+        <h2><div id="result"></div></h2>
+        <br>
+        <a href="/lab3/order">Отказаться</a>
+    </div>
+        
 {% endblock %}

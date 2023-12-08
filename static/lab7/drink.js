@@ -58,7 +58,7 @@ function pay(){
                 document.querySelector('#error').innerHTML = data.error;
             } else {
                 document.querySelector('#result').innerHTML = data.result;
-                document.querySelector('#vozvrat').style.display='';
+                document.querySelector('#vozv').style.display='';
             }
         })
 }
@@ -70,9 +70,9 @@ function refundPayment(){
         body: JSON.stringify({amount:amount}),
         headers: {'Contetnt-Type': 'application/json'}
     })
-    .then(response => response.json())
-    .then(data => {alert(data.message);})
-    .catch(error => {console.error('Ошибка:', error);});
+        .then(response => response.json())
+        .then(data => {alert(data.message);})
+        .catch(error => {console.error('Ошибка:', error);});
     
 
 }

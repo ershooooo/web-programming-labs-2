@@ -58,6 +58,21 @@ function pay(){
                 document.querySelector('#error').innerHTML = data.error;
             } else {
                 document.querySelector('#result').innerHTML = data.result;
+                document.querySelector('#vozvrat').style.display='';
             }
         })
+}
+
+function refundPayment(){
+    var amount = document.getElementsByName('amount')[0].value;
+    fetch('/lab7/refund',{
+        method: 'POST', 
+        body: JSON.stringify({amount:amount}),
+        headers: {'Contetnt-Type': 'application/json'}
+    })
+    .then(response => response.json())
+    .then(data => {alert(data.message);})
+    .catch(error => {console.error('Ошибка:', error);});
+    
+
 }

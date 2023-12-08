@@ -48,9 +48,13 @@
         <br>
         <a href="/lab3/order">Отказаться</a>
     </div>
+     
+    <div id="refund" style="display: none;">
+        <label><input class="text_input_form" type="text" name="cvv" size="3"></label>
+        <div><br><button class="text_input_form" type="submit" onclick="refund()">Возврат</button></div>
+        <br>
+    </div>
 
-    <div id="vozv" style="display: none;">
-        <button class="text_input_form" type="submit" onclick="refundPayment()">Возврат</button></div>
     
-        
+    
 {% endblock %}

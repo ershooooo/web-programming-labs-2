@@ -20,6 +20,8 @@ def api():
         return get_price(data['params'])
     if data['method']=='pay':
         return pay(data['params'])
+    if data['method'] =='refund':
+        return refund(data['params'])
 
     abort(400)
 
@@ -63,22 +65,9 @@ def pay(params):
     price = calculate_price(params)
     return {'result': f'С карты {card_num} списано {price}','error':None}
 
-
-@lab7.route('/lab7/payment', methods=['GET','POST'])
-def payment():
-    if request.metgod == 'POST':
-        if request.form.get('submit') == 'refund':
-            amount = float(request.form.get('amount'))
-            refund_amount = round(amount,2)
-            return f"Деньги в размере {refund_amount} успешно вернулись на карту"
-        else:
-            amount = float(request.form.get('amount'))
-            return "Оплата успешно выполнена"
-    else:
-        return render_template('index.html')
-@lab7.route('/refund', methods=['POST'])
-def refund():
-    data=request.json
-    amount=data['amount']
-    refund_amount = round(amount,2)
-    return jsonify({'message':f'Деньги в размере {refund_amount} рублей успешно вернулись на картую.'})
+#Функция возврата
+def refund(params):
+    card_num = params['card_num']
+    price = calculate_price(params)
+    return {"result":f'Деньги возвращены на карту {card_num} в сумме {price}','error': None}
+    

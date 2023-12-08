@@ -30,7 +30,7 @@
                     <p>Статья в избранном</p>
                 {% else %}
                     <form action="{{ url_for('add_to_favorite', article_id=article.id) }}" method="POST" style="display:inline">
-                        <label for="is_favorite">Избранные статью</label>
+                        <button type="submit" class="bl_6_1_button">Добавить в избранное</button>
                     </form>
                 {% endif %}
             </div>

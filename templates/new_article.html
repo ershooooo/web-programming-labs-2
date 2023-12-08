@@ -18,4 +18,23 @@
 </div>
 <br>
 <form action="/lab6"><input class="bl_5_button" type="submit" value="Главная страница" /></form>
+<h1>Избранные статьи</h1>
+<ul>
+    {% for article in articles %}
+        <li>
+            <div class="article">
+                <h3>{{ article.title }}</h3>
+                <p>{{ article.article_text }}</p>
+                <p>Автор: {{ article.user.username }}</p>
+                {% if article.is_favorite %}
+                    <p>Статья в избранном</p>
+                {% else %}
+                    <form action="{{ url_for('add_to_favorite', article_id=article.id) }}" method="POST" style="display:inline">
+                        <label for="is_favorite">Избранные статью</label>
+                    </form>
+                {% endif %}
+            </div>
+        </li>
+    {% endfor %}
+</ul>
 {% endblock %}

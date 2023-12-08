@@ -137,11 +137,11 @@ def createArticle():
             return render_template("new_article.html", errors=errors)
         if 'is_public' in request.form:
             is_public = True
-        new_article = articles(user_id=current_user.id, title=title, article_text=text_article, is_public=is_public)
-        db.session.add(new_article)
-        db.session.commit()
-        
-        return redirect(f"/lab6/articles/{new_article.id}")
+    new_article = articles(user_id=current_user.id, title=title, article_text=text_article, is_public=is_public)
+    db.session.add(new_article)
+    db.session.commit()
+
+    return redirect(f"/lab6/articles/{new_article.id}")
 
 @lab6.route('/lab6')
 def all():
@@ -167,3 +167,14 @@ def like_article(article_id):
     db.session.commit()
 
     return redirect(f"/lab6")
+
+@lab6.route("/lab6/articles/<int:article_id>/favorite", methods=['POST'])
+@login_required
+def add_to_favorite(article_id):
+    article = articles.query.get(article_id)
+    if article:
+        article.is_favorite = True
+        db.session.commit()
+        return redirect(f"/lab6/articles/{article_id}")
+   
+

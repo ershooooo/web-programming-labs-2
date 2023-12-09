@@ -27,5 +27,7 @@ def get_course(course_num):
 #Удаление курса
 @lab8.route('/lab8/api/courses/<int:course_num>',methods=['DELETE'])
 def del_course(course_num):
+    if course_num < 0 or course_num > len(courses)-1:
+        abort(404, "Course not found")
     del courses[course_num]
     return '', 204

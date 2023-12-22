@@ -19,3 +19,33 @@
 <img style="margin-left: auto;
 margin-right: auto; display: block;" src="/static/new-year.png">
 {%endblock%}
+
+
+{% extends "base.html" %}
+
+{% block lab %}Laboratory work 9{% endblock %}
+{% block main %}
+    <h1>Поздравление</h1>
+    <form method="POST">
+        <label>Напишите, кого хотите поздравить</label>
+        <div>
+            <input class="input" type="text" placeholder="Кого поздравляем?" 
+                name="user" value="{{user or ''}}">
+        </div>
+    
+        <div>От кого будет поздравление?</div>
+        <div>
+            <input class="input"  type="text" placeholder="Кто поздравляет?" 
+                name="user2" value="{{user2 or ''}}">
+        </div>
+    
+        <div>Выберите пол получателя</div>
+        <select name="gender" id="gender" required>
+            <option value="male">Мужчина</option>
+            <option value="female">Женщина</option>
+        </select><br><br>
+        <div>
+            <button class="button" type="submit">Поздравить!</button>
+        </div>
+    </form>
+{% endblock %}

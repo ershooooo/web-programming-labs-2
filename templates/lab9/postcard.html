@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block lab %}Лабораторная работа 9{% endblock %}
+
+{% block main %}
+    <div><img class="postcard_photo" src="/static/ny_3.jpg"></div>
+
+    <div class="postcard">
+        {% if gender == 'male' %}
+            <div>Поздравляю с наступающим</div>
+            <div>новым годом, {{ user_2 }}!</div>
+            <br>
+            <div>Пусть этот новый год сделает тебя настолько</div>
+            <div>счастливым, что будет тяжело в это поверить!</div>
+            <br>
+            <div>С любовью, {{ user_1 }} </div>
+        {% endif %}
+
+        {% if gender == 'female' %}
+            <div>Поздравляю с наступающим</div>
+            <div>новым годом, {{ user_2 }}!</div>
+            <br>
+            <div>Пусть этот новый год сделает тебя настолько</div>
+            <div>счастливой, что будет тяжело в это поверить!</div>
+            <br>
+            <div>С любовью, {{ user_1 }} </div>
+        {% endif %}
+    </div>
+{%endblock%}

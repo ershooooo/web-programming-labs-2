@@ -6,4 +6,28 @@
 
 {% block main %}
     <h1>Поздравления</h1>
+
+    <form method="POST">
+        <label>Кому предназначено поздравление?</label>
+        <div>
+            <input class="text_input_form" type="text" placeholder="Кого поздравляем?" name="user_1" value="{{user_1 or ''}}">
+        </div>
+        <br>
+        <div>От кого будет поздравление?</div>
+        <div>
+            <input class="text_input_form"  type="text" placeholder="Кто поздравляет?" name="user_2" value="{{user_2 or ''}}">
+        </div>
+        <br>
+        <div>Выберите пол получателя</div>
+        <select class="text_input_form" name="gender" id="gender" required>
+            <option value="male">Мужчина</option>
+            <option value="female">Женщина</option>
+        </select>
+        <br>
+        <br>
+        <div>
+            <button class="text_input_form" type="submit">Сформировать поздравление</button>
+        </div>
+    </form>
+
 {% endblock %}

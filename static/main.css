@@ -190,3 +190,15 @@ a {
     font-size: 20px;
 }
 
+.postcard{
+    position: absolute;
+    color: brown;
+    margin-left: 19%;
+    margin-top: -49%;
+    font-size: 35px;
+    font-family: cursive;
+}
+
+.postcard_photo{
+    max-width: 100%;
+}

@@ -3,9 +3,56 @@
 {% block lab %}Лабораторная работа 8{% endblock %}
 
 {% block script %}
-
+<script src="{{ url_for('static', filename='lab8/main.js') }}"></script>
+<style>
+    .modal{
+        display:none;
+        z-index: 100;
+        box-shadow: 3px 3px 5px black;
+        width:400px;
+        left:50%;
+        margin-left:-200px;
+        position:absolute;
+        padding:20px;
+    }
+    </style>
 {% endblock %}
 
 {% block main %}
-    
+    <h1>Список курсов</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Название</th>
+                <th>Количество видеороликов</th>
+                <th>Цена</th>
+                <th>Действие</th>
+            </tr>
+        </thead>
+        <tbody id="course-list"></tbody>
+    </table>
+    <script>fillCourselist();</script>
+    <div>
+        <button onclick="addCourse()">Добавить курс</button>
+    </div>
+    <div class="modal">
+        <input type="hidden" id="num">
+        <label>
+            name:
+            <input type="text" id="name">
+        </label><br>
+
+        <label>
+            Videos amount:
+            <input type="number" id="videos" min="0">
+        </label><br>
+
+        <label>
+            price:
+            <input type="number" id="price" min="0">
+        </label><br>
+
+        <button onclick="sendCourse()">OK</button>
+        <button onclick="cancel()">Отмена</button>
+    </div>
 {% endblock %}
